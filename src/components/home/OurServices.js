@@ -71,7 +71,7 @@ function OurServices() {
                 <Grid item xs={12} key={index}>
                   <Grid container alignItems="center"
                         direction={index % 2 === 0 ? "row" : "row-reverse"}>
-                    <Grid item sm={12} lg={6} justify="flex-end">
+                    <Grid item sm={12} lg={6}>
                       <CardMedia
                         component="img"
                         image={item.img}
