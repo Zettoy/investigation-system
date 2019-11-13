@@ -12,13 +12,12 @@ import {
 import {makeStyles} from "@material-ui/core/styles";
 
 import navItems from "../../public/navItems";
-import themeConfig from "../../config/theme";
 
 import Tab from "./Tab";
 import MobileTab from "./MobileTab";
+import GridResp from "../../util/GridResp";
 
 import logo from "../../assets/logo.png";
-
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -46,7 +45,7 @@ function NavBar() {
   return (
     <AppBar position="sticky" className={classes.appBar} elevation={0}>
       <Grid container justify="center" className={classes.root}>
-        <Grid item xs={themeConfig.xs}>
+        <GridResp>
           <Grid container alignItems="center">
 
             <Grid item style={{flexGrow: matches ? 1 : 0}}>
@@ -74,9 +73,8 @@ function NavBar() {
                 </Button>
               </Grid>
             </Hidden>
-
           </Grid>
-        </Grid>
+        </GridResp>
       </Grid>
     </AppBar>
   );

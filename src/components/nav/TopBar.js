@@ -11,7 +11,7 @@ import {
   useTheme
 } from "@material-ui/core/styles";
 
-import themeConfig from "../../config/theme"
+import GridResp from "../../util/GridResp";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,7 +33,7 @@ function TopBar() {
 
   return (
     <Grid container justify="center" className={classes.root}>
-      <Grid item xs={themeConfig.xs}>
+      <GridResp>
         <Grid container alignItems="center" className={classes.tabs}>
           <Grid item>
             <Typography variant="body2" className={classes.text} color="inherit">
@@ -53,7 +53,7 @@ function TopBar() {
             </Typography>
           </Grid>
         </Grid>
-      </Grid>
+      </GridResp>
     </Grid>
   );
 }

@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import Link from "react-router-dom/Link";
 
 import {makeStyles} from "@material-ui/core/styles";
 
@@ -10,15 +9,14 @@ import {
   MenuList,
   Paper,
   Popper,
-  Typography
 } from "@material-ui/core";
-import themeConfig from "../../config/theme";
+
+import TypographyNav from "./util/TypographyNav";
 
 const useStyles = makeStyles(theme => ({
   tabItem: {
     marginLeft: theme.spacing(5),
   },
-  link: themeConfig.link,
   menu: {
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
@@ -45,16 +43,12 @@ function Tab(props) {
     return (
       <Grid item key={props.index} className={classes.tabItem}
             onMouseLeave={hover ? undefined : () => setAnchorEl(null)}>
-        <Typography variant="h6"
-                    color="primary"
-                    aria-controls="menu"
-                    aria-haspopup="true"
-                    component={Link}
-                    to={item.pathname}
-                    className={classes.link}
-                    onMouseOver={event => {setAnchorEl(event.currentTarget)}}>
+        <TypographyNav aria-controls="menu"
+                       aria-haspopup="true"
+                       to={item.pathname}
+                       onMouseOver={event => {setAnchorEl(event.currentTarget)}}>
           {item.label}
-        </Typography>
+        </TypographyNav>
 
         <Popper open={Boolean(anchorEl)} anchorEl={anchorEl} role={undefined} transition disablePortal>
           {({TransitionProps, placement}) => (
@@ -68,15 +62,12 @@ function Tab(props) {
                           onMouseLeave={() => {setHover(false); setAnchorEl(null)}}>
 
                   {item.children.map((item, index) => (
-                    <Typography variant="body1"
-                                color="primary"
-                                component={Link}
-                                to={item.pathname}
-                                className={classes.link}>
+                    <TypographyNav variant="body1"
+                                   to={item.pathname}>
                       <MenuItem key={index} className={classes.menuItem}>
                         {item.label}
                       </MenuItem>
-                    </Typography>
+                    </TypographyNav>
                   ))}
                 </MenuList>
 
@@ -90,13 +81,9 @@ function Tab(props) {
 
   return (
     <Grid item key={props.index} className={classes.tabItem}>
-      <Typography variant="h6"
-                  color="primary"
-                  component={Link}
-                  to={item.pathname}
-                  className={classes.link}>
+      <TypographyNav to={item.pathname}>
         {item.label}
-      </Typography>
+      </TypographyNav>
     </Grid>
   );
 }

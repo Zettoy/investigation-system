@@ -1,4 +1,4 @@
-const theme = {
+export default {
   palette: {
     primary: {
       main: '#267fc0'
@@ -9,16 +9,5 @@ const theme = {
     MuiButtonBase: {
       disableRipple: true,
     }
-  }
-};
-
-export default {
-  theme: theme,
-  xs: 12,
-  flex: {
-    flexGrow: 1
-  },
-  link: {
-    textDecoration: 'none'
   }
 };

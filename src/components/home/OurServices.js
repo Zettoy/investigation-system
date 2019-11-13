@@ -15,11 +15,17 @@ import {
   useTheme
 } from "@material-ui/core/styles";
 
-import themeConfig from "../../config/theme";
+import GridResp from "../../util/GridResp";
 import services from "../../public/services";
 
 const useStyles = makeStyles(theme => ({
-  link: themeConfig.link,
+  link: {
+    textDecoration: 'none',
+    '&:hover': {
+      color: theme.palette.text.primary
+    },
+    fontWeight: 700
+  },
   ourServices: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
@@ -51,10 +57,10 @@ function OurServices() {
 
   return (
     <Grid container justify="center" className={classes.ourServices}>
-      <Grid item xs={themeConfig.xs}>
+      <GridResp>
         <Grid container>
           <Grid item xs={12} style={{textAlign: 'center'}}>
-            <Typography variant="h4" color="primary" style={{fontWeight: 700}}>
+            <Typography variant="h4" color="primary" className={classes.link}>
               Our Services
             </Typography>
           </Grid>
@@ -122,7 +128,7 @@ function OurServices() {
             </Button>
           </Grid>
         </Grid>
-      </Grid>
+      </GridResp>
     </Grid>
   );
 }

@@ -10,7 +10,7 @@ import {
   useTheme
 } from "@material-ui/core/styles";
 
-import themeConfig from "../../config/theme";
+import GridResp from "../../util/GridResp";
 
 import security from "../../assets/security.jpg";
 
@@ -41,7 +41,7 @@ function Whssc() {
 
   return (
     <Grid container justify="center" className={classes.whssc}>
-      <Grid item xs={themeConfig.xs}>
+      <GridResp>
         <Grid container style={{textAlign: 'center'}}>
           <Grid item xs={12}>
             <Typography variant="h4" color="primary" style={{fontWeight: 700}}>
@@ -85,7 +85,7 @@ function Whssc() {
               content: 'Our main goal is to have satisfied customers.'
             }
           ].map((item, index) => (
-            <Grid item sm={6} lg={4} key={index}>
+            <Grid item xs={12} sm={6} md={4} key={index}>
               <Grid container>
                 <Grid item xs={12} className={classes.missionVisionGoal}>
                   <Typography variant="h6" color="primary">
@@ -101,7 +101,7 @@ function Whssc() {
             </Grid>
           ))}
         </Grid>
-      </Grid>
+      </GridResp>
     </Grid>
   );
 }

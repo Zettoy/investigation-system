@@ -1,10 +1,9 @@
 import React, {useState} from "react";
-import Link from "react-router-dom/Link";
 
 import {
   Button,
-  Grid,
-  Typography
+  Collapse,
+  Grid
 } from "@material-ui/core";
 
 import {
@@ -12,11 +11,15 @@ import {
   useTheme
 } from "@material-ui/core/styles";
 
+import TypographyNav from "./util/TypographyNav";
+
 import navItems from "../../public/navItems";
-import themeConfig from "../../config/theme";
 
 const useStyles = makeStyles(theme => ({
-  link: themeConfig.link,
+  menu: {
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(3)
+  },
   button: {
     borderRadius: '20px',
     textTransform: 'none'
@@ -36,27 +39,26 @@ function MobileTab() {
           Menu
         </Button>
       </Grid>
-
-      {open && (
         <Grid item xs={12}>
-          <Grid container style={{paddingTop: theme.spacing(1), paddingBottom: theme.spacing(3)}}>
-            {navItems.map((item, index) => (
-              <Grid item xs={12} key={index} style={{marginTop: theme.spacing(1)}}>
-                <Typography variant="h6" color="primary" className={classes.link}
-                            component={Link} to={item.pathname}>
-                  {item.label}
-                </Typography>
+          <Collapse in={open}>
+            <Grid container className={classes.menu}>
+              {navItems.map((item, index) => (
+                <Grid item xs={12} key={index}
+                      style={{marginTop: theme.spacing(1)}}>
+                  <TypographyNav to={item.pathname}>
+                    {item.label}
+                  </TypographyNav>
+                </Grid>
+              ))}
+              <Grid item xs={12}
+                    style={{marginTop: theme.spacing(3)}}>
+                <Button variant="contained" color="primary" className={classes.button}>
+                  Learning Portal
+                </Button>
               </Grid>
-            ))}
-
-            <Grid item xs={12} style={{marginTop: theme.spacing(3)}}>
-              <Button variant="contained" color="primary" className={classes.button}>
-                Learning Portal
-              </Button>
             </Grid>
-          </Grid>
+          </Collapse>
         </Grid>
-      )}
     </React.Fragment>
   );
 }
